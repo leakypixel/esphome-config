@@ -1,0 +1,8 @@
+platform: gpio
+pin:
+  number: ${rain_sensor_pin}
+  inverted: True
+name: Rain sensor
+device_class: moisture
+filters:
+  - delayed_on: 10ms

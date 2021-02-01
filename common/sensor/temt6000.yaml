@@ -1,0 +1,6 @@
+platform: adc
+pin: ${illuminance_pin}
+name: "${device_name} Illuminance"
+unit_of_measurement: lx
+filters:
+  - lambda: return (x * 3.3 / 10000.0) * 2000000.0;

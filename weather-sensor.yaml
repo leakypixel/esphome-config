@@ -1,0 +1,35 @@
+esphome:
+  name: weatherstation
+  platform: ESP8266
+  board: d1_mini
+
+substitutions:
+  device_id: weather_station_1
+  device_name: "Weather station"
+
+  i2c_scl_pin: GPIO05 # I2C Clock
+  i2c_sda_pin: GPIO04 # I2C Data
+  illuminance_pin: A0
+  rain_sensor_pin: D4
+  motion_pin: D0
+  bme280_address: '0x76'
+
+<<: !include common/config/wifi.yaml
+<<: !include common/config/i2c.yaml
+<<: !include common/config/logger.yaml
+<<: !include common/config/api.yaml
+<<: !include common/config/ota.yaml
+<<: !include common/config/time.yaml
+<<: !include common/config/web_server.yaml
+
+sensor:
+  - !include common/sensor/bme280.yaml #BME280
+  - !include common/sensor/dew_point.yaml
+  - !include common/sensor/temt6000.yaml #TEMT6000
+  - !include common/sensor/wifi.yaml #Wifi Signal
+  - !include common/sensor/uptime.yaml #Uptime
+
+binary_sensor:
+  - !include common/binary_sensor/rain.yaml
+  - !include common/binary_sensor/status.yaml
+  - !include common/binary_sensor/motion.yaml

@@ -70,16 +70,7 @@ sensor:
     filters:
       - lambda: |-
           return (x / 10000.0) * 2000000.0;
-  - platform: ads1115
-    multiplexer: 'A1_GND'
-    gain: 4.096
-    name: "Multisensor Gas"
-    unit_of_measurement: ppm
-    filters:
-      - lambda: |-
-              return pow((x / 0.00015600) / 37835, -2.752747);
-     #      return 1 * 146.15 * (2.868 - x) + 10;
-           
+  
   - platform: ads1115
     multiplexer: 'A2_GND'
     gain: 4.096

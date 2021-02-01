@@ -1,0 +1,4 @@
+i2c:
+  scan: True
+  sda: ${i2c_sda_pin}
+  scl: ${i2c_scl_pin}
