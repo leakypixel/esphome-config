@@ -3,30 +3,12 @@ esphome:
   platform: ESP8266
   board: nodemcu
 
-wifi:
-  ssid: Avalon
-  password: raspberry
-  power_save_mode: none
-  fast_connect: false
-  output_power: 20.5db
-  ap:
-    ssid: "Testroom Fallback Hotspot"
-    password: "tsunamis"
-    #  manual_ip:  
-    #    static_ip: 10.139.10.166
-    #    gateway: 10.139.10.1
-    #    subnet: 255.255.255.0
-    #    dns1: 10.139.10.1
-
-captive_portal:
-
-# Enable logging
-logger:
-  level: VERBOSE
-
-api:
-
-ota:
+<<: !include common/config/wifi.yaml
+<<: !include common/config/logger.yaml
+<<: !include common/config/api.yaml
+<<: !include common/config/ota.yaml
+<<: !include common/config/time.yaml
+<<: !include common/config/web_server.yaml
 
 binary_sensor:
   - platform: gpio
